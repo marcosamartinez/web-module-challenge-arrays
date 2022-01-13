@@ -44,11 +44,11 @@ Use the copy function below to do the following:
   1. receive an array as a parameter - you will pass in originalFlavors as an argument when the function is invoked.
   2. Return a copy of the received array  
 */
-
-function copy(/*your code here*/){
-  /*your code here*/
+const copyFlavors = [];
+function copy(copyFlavors){
+  return [...copyFlavors]
 }    
-
+console.log("Task 1", copy(originalFlavors))
 
 
 
@@ -63,10 +63,15 @@ Confirm that an array is exactly 31 flavors. Your function should accept:
 For Example: is31Flavors(originalFlavors) will return true if your code is working properly
 */
 
-
-function is31Flavors(/*your code here*/){
- /*your code here*/
+// We want to see want to see if the array 
+function is31Flavors(copyFlavors){
+    if (copyFlavors.length = 31 ) {
+    return true ;
+    } else {
+      return false ; 
+    }
 }
+console.log("task 2",is31Flavors(copyFlavors))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Corporate has come to you with an idea for a new flavor: Rainbow Sherbert! They think this will be a game changer. You need to modify the array to include this flavor. 
@@ -80,10 +85,15 @@ Use the addFlavor function below to do the following:
   For example: addFlavor(originalFlavors, "Rainbow Sherbert") should return the array ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla Burnt Almond"]
 */
 
+// 2 parameters first one is going to be array, 
 
-function addFlavor(/*your code here*/){
- /*your code here*/
+function addFlavor(copyFlavors, string) {
+  copyFlavors.unshift(string);
+  return copyFlavors;
 }
+    
+console.log("Task 3", addFlavor(originalFlavors, "Rainbow Sherbert"));
+
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -97,10 +107,12 @@ Use the removeLastFlavor function below to do the following:
   For example: running removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]
 */
 
-function removeLastFlavor(/*your code here*/){
- /*your code here*/
+function removeLastFlavor(copyFlavors) {
+ copyFlavors.pop(copyFlavors);
+ return copyFlavors;
 }
-
+console.log(removeFlavorByName(originalFlavors));
+// .pop removes the last item 
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -113,11 +125,12 @@ Use the getFlavorByIndex function below to do the following:
 
   For example: running getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully
 */
+// recive an array 2 parameters , array and index
 
-function getFlavorByIndex(/*your code here*/){
-  /*your code here*/
+function getFlavorByIndex(copyFlavors, number) {
+  return copyFlavors[number]
 }
-
+console.log(getFlavorByIndex(originalFlavors,[2]))
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, 
@@ -134,9 +147,15 @@ Use the removeFlavorByName function below to do the following:
   HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
-  /*your code here*/
+function removeFlavorByName(copyFlavors, flavor) {
+  for( let i = 0; i < copyFlavors.length; i++) {
+    if (copyFlavors[i] === flavor ) {
+      copyFlavors.splice(i, 1);
+    }
+  }
+  return copyFlavors;
 }
+console.log(removeFlavorByName(originalFlavors, "Rocky Road"));
 
 
 
@@ -159,11 +178,20 @@ Use the filterByWord function below to do the following:
 
   DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
 */
-
-function filterByWord(/*your code here*/){
-  /*your code here*/
+// 2 paramaters, array , string 
+//
+function filterByWord(copyFlavors, string){
+  let newArray = [];
+  for(let i = 0; i < copyFlavors.length; i++){
+    if(copyFlavors[i].includes(string)) {
+       newArray.push(copyFlavors[i])
+    }
+  }
+  return newArray;
+  //create a new array called filterd array to push my values to 
+  //loop through the first array and 
 }
-
+console.log(filterByWord(originalFlavors, "Chocolate"))
 
 /* 💪💪💪💪💪🧁🍦🍨 STRETCH 🍨🍦🍫💪💪💪💪💪*/ 
 
@@ -300,4 +328,3 @@ module.exports = {
   getAverageWordLength,
   getRandomFlavors
 }
-
